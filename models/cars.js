@@ -19,6 +19,10 @@ const carsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    image:{
+        type: String,
+        required: true
+    },
     transmission:{
         type: String,
         required: true
@@ -35,4 +39,5 @@ const carsSchema = new mongoose.Schema({
     
 });
 
-module.exports = mongoose.module("Cars", carsSchema);
+//module.exports = mongoose.module("Cars", carsSchema);
+module.exports = mongoose.model("Cars",carsSchema);

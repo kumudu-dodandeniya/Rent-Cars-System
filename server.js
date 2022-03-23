@@ -1,7 +1,17 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require ('body-parser');
 
 const app = express();
+
+//import routes
+const carRoutes = require('./routes/cars');
+
+//app middleware
+app.use(bodyParser.json());
+
+//rote middleware
+app.use(carRoutes);
 
 const PORT = 8000;
  app.listen(PORT, () =>{

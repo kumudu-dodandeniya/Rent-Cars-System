@@ -5,7 +5,7 @@ const router = express.Router();
 //save cars
 router.post('/car/save', (req,res) => {
 
-    let newCar = new Cars(req,body);
+    let newCar = new Cars(req.body);
 
     newCar.save ((err) => {
         if(err){
@@ -19,7 +19,7 @@ router.post('/car/save', (req,res) => {
     });
 });
 
-module. exports = 
+module. exports = router;
 
 router.get("/", (req, res, next) => {
     
