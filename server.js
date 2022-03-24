@@ -1,14 +1,17 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require ('body-parser');
+const cors = require('cors');
 
 const app = express();
 
 //import routes
 const carRoutes = require('./routes/cars');
+const { required } = require("nodemon/lib/config");
 
 //app middleware
 app.use(bodyParser.json());
+app.use(cors());
 
 //rote middleware
 app.use(carRoutes);

@@ -6,7 +6,7 @@ const router = express.Router();
 //save cars
 router.post('/car/save', (req,res) => {
 
-    let newCar = new Cars(reqbody);
+    let newCar = new Cars(req.body);
 
     newCar.save ((err) => {
         if(err){
@@ -35,6 +35,26 @@ router.get("/cars", (req, res) => {
     });
     
 });
+
+//get a specific car
+router.get('/car/:id', (req, res) =>{
+    let carId = req.params.id;
+
+    Cars.findById(carId,(err,car) => {
+        if(err){
+            return res.status(400).json({
+                success:false
+            });
+        } 
+        return res.status(200).json({
+            success: true,
+            car
+        });
+
+    });
+});
+
+
 
 //update cars
 router.put('/cars/update/:id', (req, res) => {
