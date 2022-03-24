@@ -5,6 +5,7 @@ import CreateCar from './components/CreateCar';
 import EditCar from './components/EditCar';
 import Navbar from './components/Navbar';
 import ReadCars from './components/ReadCars';
+import Home from './components/Home';
 export default class App extends Component {
   render() {
     return (
@@ -12,6 +13,7 @@ export default class App extends Component {
       <div className='container'>
         <Navbar/>
         <Route path="/" exact component={ReadCars} ></Route>
+        <Route path="/home" exact component={Home}></Route>
         <Route path="/add" exact component={CreateCar}></Route>
         <Route path="/edit/:id" exact component={EditCar}></Route>
         <Route path="/car/:id" exact component={CarDetails}></Route>
