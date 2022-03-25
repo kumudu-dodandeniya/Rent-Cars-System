@@ -7,13 +7,13 @@ constructor(props){
   super(props);
   this.state={
     name:"",
-    type:"",
-    capacity:"",
-    fuelType:"",
     transmission:"",
+    type:"",
+    image:"",
+    capacity:"",
     rateper:"",
-    rateweek:"",
-    image:""
+    fuelType:"",
+    rateweek:""
 
   }
 }
@@ -29,17 +29,17 @@ handleInputChange =(e) =>{
 onSubmit = (e) =>{
   e.preventDefault();
 
-  const {name,type,capacity,fuelType,transmission,rateper,rateweek,image} = this.state;
+  const {name,transmission,type,image,capacity,rateper,fuelType,rateweek} = this.state;
 
   const data = {
     name:name,
-    type:type,
-    capacity:capacity,
-    fuelType:fuelType,
     transmission:transmission,
+    type:type,
+    image:image,
+    capacity:capacity,
     rateper:rateper,
-    rateweek:rateweek,
-    image:image
+    fuelType:fuelType,
+    rateweek:rateweek
   }
   console.log(data)
 
@@ -48,13 +48,14 @@ onSubmit = (e) =>{
       this.setState(
         {
           name:"",
-          type:"",
-          capacity:"",
-          fuelType:"",
           transmission:"",
+          type:"",
+          image:"",
+          capacity:"",
           rateper:"",
-          rateweek:"",
-          image:""
+          fuelType:"",
+          rateweek:""
+                  
 
         }
       )
@@ -67,49 +68,22 @@ onSubmit = (e) =>{
   render() {
     return (
       <div className='col-md-8 mt-4 mx-auto'>
-        <h1 className='h3 mb-3 font-weight-normal'>Add New Car</h1>
-        <form className='need-validation' noValidate>
-          <div className='form-group' style={{marginBottom: '15px'}}>
-            <label style={{marginBottom:'5px'}}>Vehicle Name</label>
-            <input type= "text"
-            className='form-control'
-            name='name'
-            placeholder='Enter Vehicle Name'
-            value={this.state.name}
-            onChange={this.handleInputChange}></input>
-          </div>
+        <h1 className='h3 mb-3 font-weight-normal'>Add New Vehicle</h1>
+        <form>
 
-          <div className='form-group' style={{marginBottom: '15px'}}>
-            <label style={{marginBottom:'5px'}}>Vehicle Type</label>
-            <input type= "text"
-            className='form-control'
-            name='type'
-            placeholder='Enter Vehicle Type'
-            value={this.state.type}
-            onChange={this.handleInputChange}></input>
-          </div>
+        <div class="row">
+            <div className='col' style={{marginBottom: '15px'}}>
+                <label style={{marginBottom:'5px'}}>Vehicle Name</label>
+                <input type= "text"
+                className='form-control'
+                name='name'
+                placeholder='Enter Vehicle Name'
+                value={this.state.name}
+                onChange={this.handleInputChange} required></input>
+            </div>
+         
 
-          <div className='form-group' style={{marginBottom: '15px'}}>
-            <label style={{marginBottom:'5px'}}>Capacity</label>
-            <input type= "text"
-            className='form-control'
-            name='capacity'
-            placeholder='Enter Seat Capacity'
-            value={this.state.capacity}
-            onChange={this.handleInputChange}></input>
-          </div>
-
-          <div className='form-group' style={{marginBottom: '15px'}}>
-            <label style={{marginBottom:'5px'}}>Fuel Type</label>
-            <input type= "text"
-            className='form-control'
-            name='fuelType'
-            placeholder='Enter Fuel Type'
-            value={this.state.fuelType}
-            onChange={this.handleInputChange}></input>
-          </div>
-
-          <div className='form-group' style={{marginBottom: '15px'}}>
+            <div className='col' style={{marginBottom: '15px'}}>
             <label style={{marginBottom:'5px'}}>Transmission</label>
             
             <input type= "text"
@@ -122,8 +96,45 @@ onSubmit = (e) =>{
           </input>
             
           </div>
+          </div>
 
-          <div className='form-group' style={{marginBottom: '15px'}}>
+          
+        <div class="row">
+              <div className='col' style={{marginBottom: '15px'}}>
+              <label style={{marginBottom:'5px'}}>Vehicle Type</label>
+              <input type= "text"
+              className='form-control'
+              name='type'
+              placeholder='Enter Vehicle Type'
+              value={this.state.type}
+              onChange={this.handleInputChange}></input>
+            </div>
+          
+
+            <div className='col' style={{marginBottom: '15px'}}>
+            <label style={{marginBottom:'5px'}}>Image URL</label>
+            <input type= "text"
+            className='form-control'
+            name='image'
+            placeholder='Enter Vehicle Image URL'
+            value={this.state.image}
+            onChange={this.handleInputChange}></input>
+          </div>
+          </div>
+
+
+         <div class="row">
+         <div className='col' style={{marginBottom: '15px'}}>
+            <label style={{marginBottom:'5px'}}>Seatting Capacity</label>
+            <input type= "text"
+            className='form-control'
+            name='capacity'
+            placeholder='Enter Seat Capacity'
+            value={this.state.capacity}
+            onChange={this.handleInputChange}></input>
+          </div>
+        
+          <div className='col' style={{marginBottom: '15px'}}>
             <label style={{marginBottom:'5px'}}>Rate Per Day</label>
             <input type= "text"
             className='form-control'
@@ -133,7 +144,21 @@ onSubmit = (e) =>{
             onChange={this.handleInputChange}></input>
           </div>
 
-          <div className='form-group' style={{marginBottom: '15px'}}>
+           </div>
+
+
+           <div class="row">
+           <div className='col' style={{marginBottom: '15px'}}>
+            <label style={{marginBottom:'5px'}}>Fuel Type</label>
+            <input type= "text"
+            className='form-control'
+            name='fuelType'
+            placeholder='Enter Fuel Type'
+            value={this.state.fuelType}
+            onChange={this.handleInputChange}></input>
+          </div>
+
+          <div className='col' style={{marginBottom: '15px'}}>
             <label style={{marginBottom:'5px'}}>Rate Per Week</label>
             <input type= "text"
             className='form-control'
@@ -142,16 +167,8 @@ onSubmit = (e) =>{
             value={this.state.rateweek}
             onChange={this.handleInputChange}></input>
           </div>
-
-          <div className='form-group' style={{marginBottom: '15px'}}>
-            <label style={{marginBottom:'5px'}}>Image URL</label>
-            <input type= "text"
-            className='form-control'
-            name='image'
-            placeholder='Enter Vehicle Image URL'
-            value={this.state.image}
-            onChange={this.handleInputChange}></input>
           </div>
+
 
           <button className='btn btn-success' type='submit' style={{marginTop:'15px', marginBottom: '20px'}} onClick={this.onSubmit}>
             <i className='far fa-check-square'></i>&nbsp; Save

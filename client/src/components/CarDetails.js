@@ -52,13 +52,12 @@ export default class CarDetails extends Component {
             <dt className='col-sm-3'>Rate Per Week</dt>
             <dd className='col-sm-9'>{rateweek}</dd>
 
+            <img className="card-img-top" src={image}></img>
+
             
             
           
-
-            
-
-        </d1>
+</d1>
 
         
       </div>

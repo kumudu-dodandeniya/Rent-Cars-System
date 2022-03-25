@@ -26,11 +26,42 @@ export default class ReadCars extends Component {
     });
   }
 
+  filterData(cars,searchkey){
+    const result = cars.filter((car) =>
+    car.name.toLowerCase().includes(searchkey)
+    )
+    
+    this.setState({cars:result})
+  }
+
+  handleSearchArea = (e) => {
+    const searchkey = e. currentTarget.value;
+
+    axios.get("http://localhost:8000/cars").then(res =>{
+      if(res.data.success){
+        this.filterData(res.data.existingCars,searchkey)
+      }
+    });
+  }
+
+
 
   render() {
     return (
       <div className='container'>
-        <p>All cars</p>
+       <div className="row">
+          <div className='col-lg-9 mt-2 mb-2'>
+            <h4>All Cars</h4>
+          </div>
+          <div className='col-lg-3 mt-2 mb-2'>
+            <input 
+            className='form-control'
+            type="search"
+            placeholder='Search'
+            name='searchQuery'
+            onChange={this.handleSearchArea}></input>
+          </div>
+        </div>
         <table className="table">
           <thead>
 
@@ -38,7 +69,7 @@ export default class ReadCars extends Component {
               <th scope="col">#</th>
               <th scope="col">Vehicle Name</th>
               <th scope="col">Type</th>
-              <th scope="col">Capacity</th>
+              <th scope="col">Seating Capacity</th>
               <th scope="col">Fuel Type</th>
               <th scope="col">Transmission</th>
               <th scope="col">Image</th>
@@ -58,7 +89,7 @@ export default class ReadCars extends Component {
                 <td>{cars.capacity}</td>
                 <td>{cars.fuelType}</td>
                 <td>{cars.transmission}</td>
-                <td ><img src={cars.image}  style={{width:'100px' , height:'100px'}}></img></td>
+                <td ><img src={cars.image}  style={{width:'200px' , height:'100px'}}></img></td>
                 <td>{cars.rateper}</td>
                 <td>{cars.rateweek}</td>
 
