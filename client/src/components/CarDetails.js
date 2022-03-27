@@ -28,16 +28,21 @@ export default class CarDetails extends Component {
 
     const {name,type,capacity,fuelType,transmission,image,rateper,rateweek} = this.state.car;
     return (
-       
-      <div style={{marginTop:'20px'}}>
-        <h4>{name}</h4>
-        <hr/>
+    <div className="container text-center list vehicle">
+      <div className='row'>
+            <div className='col-md-12'>
+            <h4 style={{marginTop:'20px'}}>{name}</h4>
+            <hr/>
+            <img className="card-img-top" src={image} style={{maxWidth:'100%' , maxHeight:'auto', verticalAlign:'middle', borderStyle:'none'}}></img>
+            </div>
+            </div>
 
         <d1 className="row">
+            <h4>Vehicle Details</h4>
             <dt className='col-sm-3'>Vehicle Type</dt>
             <dd className='col-sm-9'>{type}</dd>
 
-            <dt className='col-sm-3'>Capacity</dt>
+            <dt className='col-sm-3'>Seating Capacity</dt>
             <dd className='col-sm-9'>{capacity}</dd>
 
             <dt className='col-sm-3'>Fuel Type</dt>
@@ -46,18 +51,18 @@ export default class CarDetails extends Component {
             <dt className='col-sm-3'>Transmission</dt>
             <dd className='col-sm-9'>{transmission}</dd>
 
-            <dt className='col-sm-3'>Rate Per Day</dt>
+            </d1>
+            <h4>Rate</h4>
+            <d1 className="row">
+            <dt className='col-sm-3'>For A Day</dt>
             <dd className='col-sm-9'>{rateper}</dd>
 
-            <dt className='col-sm-3'>Rate Per Week</dt>
+            <dt className='col-sm-3'>For A Week</dt>
             <dd className='col-sm-9'>{rateweek}</dd>
 
-            <img className="card-img-top" src={image}></img>
+           
 
-            
-            
-          
-</d1>
+    </d1>
 
         
       </div>
