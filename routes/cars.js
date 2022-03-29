@@ -42,8 +42,9 @@ router.get('/car/:id', (req, res) =>{
 
     Cars.findById(carId,(err,car) => {
         if(err){
+    
             return res.status(400).json({
-                success:false
+                success:false, err
             });
         } 
         return res.status(200).json({
@@ -57,7 +58,7 @@ router.get('/car/:id', (req, res) =>{
 
 
 //update cars
-router.put('/cars/update/:id', (req, res) => {
+router.put('/car/update/:id', (req, res) => {
     Cars.findByIdAndUpdate(
         req.params.id,
         {

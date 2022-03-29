@@ -82,19 +82,17 @@ export default class ReadCars extends Component {
             {this.state.cars.map((cars,index) =>(
               <tr key={index}> 
                 <th scope='row'>{index+1}</th>
-                <td>
-                  <a href={`/car/${cars._id}`} style={{textDecoration:'none'}}>
-                  {cars.name}</a></td>
+                <td>{cars.name}</td>
                 <td>{cars.type}</td>
                 <td>{cars.capacity}</td>
                 <td>{cars.fuelType}</td>
                 <td>{cars.transmission}</td>
-                <td ><img src={cars.image}  style={{width:'200px' , height:'100px'}}></img></td>
+                <td ><img src={cars.image}  style={{width:'150px' , height:'100px'}}></img></td>
                 <td>{cars.rateper}</td>
                 <td>{cars.rateweek}</td>
 
                 <td>
-                  <a className='btn btn-warning' href="#">
+                  <a className='btn btn-warning' href={`/edit/${cars._id}`}>
                     <i className='fas fa-edit'></i>&nbsp;Edit
                   </a>
                   &nbsp;

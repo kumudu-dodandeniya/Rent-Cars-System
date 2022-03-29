@@ -69,8 +69,7 @@ export default class Home extends Component {
                 <Card.Body>
                   <Card.Title>{item.name}</Card.Title>
                   <Card.Text>
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                  There is a brand new fleet of luxury cars for hire in Sri Lanka on offer.Leather Int. A/C, Ambient/ Mood lighting, Power Steering, Blue Tooth
                   </Card.Text>
                   <Button
                     variant="success"

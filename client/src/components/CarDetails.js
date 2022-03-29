@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios  from 'axios';
+import { Button, Card, Container, Col, Row } from "react-bootstrap";
 
 export default class CarDetails extends Component {
     constructor(props){
@@ -28,9 +29,9 @@ export default class CarDetails extends Component {
 
     const {name,type,capacity,fuelType,transmission,image,rateper,rateweek} = this.state.car;
     return (
-    <div className="container text-center list vehicle">
+        <div className="container text-center list vehicle">
       <div className='row'>
-            <div className='col-md-12'>
+            <div className='col-md-12'> 
             <h4 style={{marginTop:'20px'}}>{name}</h4>
             <hr/>
             <img className="card-img-top" src={image} style={{maxWidth:'100%' , maxHeight:'auto', verticalAlign:'middle', borderStyle:'none'}}></img>
@@ -66,7 +67,6 @@ export default class CarDetails extends Component {
 
         
       </div>
-      
     )
   }
 }
