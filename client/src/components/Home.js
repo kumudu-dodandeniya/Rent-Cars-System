@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Button, Card, Container, Col, Row } from "react-bootstrap";
+import { Button, Card, Container, Col, Row, CardImg } from "react-bootstrap";
 
 export default class Home extends Component {
   constructor(props) {
@@ -63,13 +63,13 @@ export default class Home extends Component {
         </Row>
         <Row xs={1} md={4}>
           {this.state.cars.map((item, index) => (
-            <Col style={{ paddingTop: "15px" }} key={index}>
+            <Col style={{ paddingTop: "15px" ,paddingBottom: "20px"}} key={index}>
               <Card>
-                <Card.Img variant="top" src={item.image} />
-                <Card.Body>
+                <CardImg class="thumbnail" src={item.image}  />
+                <div class="box-element product">
                   <Card.Title>{item.name}</Card.Title>
                   <Card.Text>
-                  There is a brand new fleet of luxury cars for hire in Sri Lanka on offer.Leather Int. A/C, Ambient/ Mood lighting, Power Steering, Blue Tooth
+                  There is a brand new fleet of luxury cars for hire in Sri Lanka on offer.{item.type}
                   </Card.Text>
                   <Button
                     variant="success"
@@ -77,12 +77,13 @@ export default class Home extends Component {
                   >
                     Read More
                   </Button>
-                </Card.Body>
+                </div>
               </Card>
             </Col>
           ))}
         </Row>
       </Container>
+             
     );
   }
 }

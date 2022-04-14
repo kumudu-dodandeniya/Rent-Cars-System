@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Button } from "react-bootstrap";
+import { Button , InputGroup, Form} from "react-bootstrap";
 
 export default class CreateCar extends Component {
   constructor(props) {
@@ -72,9 +72,10 @@ export default class CreateCar extends Component {
       <div className="col-md-8 mt-4 mx-auto">
         <h1 className="h3 mb-3 font-weight-normal">Add New Vehicle</h1>
         <form>
-          <div class="row">
+          <div className="row">
             <div className="col" style={{ marginBottom: "15px" }}>
               <label style={{ marginBottom: "5px" }}>Vehicle Name</label>
+              
               <input
                 type="text"
                 className="form-control"
@@ -83,9 +84,11 @@ export default class CreateCar extends Component {
                 value={this.state.name}
                 onChange={this.handleInputChange}
                 required
+                
               >
                 
               </input>
+              
             </div>
 
             <div className="col" style={{ marginBottom: "15px" }}>
@@ -103,7 +106,7 @@ export default class CreateCar extends Component {
             </div>
           </div>
 
-          <div class="row">
+          <div className="row">
             <div className="col" style={{ marginBottom: "15px" }}>
               <label style={{ marginBottom: "5px" }}>Vehicle Type</label>
               <input
@@ -113,7 +116,9 @@ export default class CreateCar extends Component {
                 placeholder="Enter Vehicle Type"
                 value={this.state.type}
                 onChange={this.handleInputChange}
+                required
               ></input>
+              
             </div>
 
             <div className="col" style={{ marginBottom: "15px" }}>
@@ -125,20 +130,23 @@ export default class CreateCar extends Component {
                 placeholder="Enter Vehicle Image URL"
                 value={this.state.image}
                 onChange={this.handleInputChange}
+                required
               ></input>
             </div>
           </div>
 
-          <div class="row">
+          <div className="row">
             <div className="col" style={{ marginBottom: "15px" }}>
               <label style={{ marginBottom: "5px" }}>Seatting Capacity</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="capacity"
                 placeholder="Enter Seat Capacity"
+                pattern = "[0-9]{10}"
                 value={this.state.capacity}
                 onChange={this.handleInputChange}
+                required
               ></input>
             </div>
 
@@ -151,11 +159,12 @@ export default class CreateCar extends Component {
                 placeholder="Enter Rate Per Day"
                 value={this.state.rateper}
                 onChange={this.handleInputChange}
+                required
               ></input>
             </div>
           </div>
 
-          <div class="row">
+          <div className="row">
             <div className="col" style={{ marginBottom: "15px" }}>
               <label style={{ marginBottom: "5px" }}>Fuel Type</label>
               <input
@@ -165,6 +174,7 @@ export default class CreateCar extends Component {
                 placeholder="Enter Fuel Type"
                 value={this.state.fuelType}
                 onChange={this.handleInputChange}
+                required
               ></input>
             </div>
 
@@ -177,6 +187,7 @@ export default class CreateCar extends Component {
                 placeholder="Enter Rate Per Week"
                 value={this.state.rateweek}
                 onChange={this.handleInputChange}
+                required
               ></input>
             </div>
           </div>
@@ -185,15 +196,19 @@ export default class CreateCar extends Component {
             className="btn btn-success"
             type="submit"
             style={{ marginTop: "15px", marginBottom: "20px", marginRight:"10px" }}
+            title="Save New Car"
             onClick={this.onSubmit}
           >
-            <i className="far fa-check-square"></i>&nbsp; Save
+            <i className="fa fa-car"></i>&nbsp; Save
+           
           </button>
 
           <Button
                     variant="success"
                     style={{ marginTop: "15px", marginBottom: "20px" }}
+                    title="Show All Cars Details"
                     onClick={() => this.props.history.push(`/`)}
+
                   >
                     Back
                   </Button>

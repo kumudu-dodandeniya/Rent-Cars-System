@@ -1,40 +1,26 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
+import { Container,Nav,Navbar} from "react-bootstrap";
 
-export default class Navbar extends Component {
+
+export default class bar extends Component {
   render() {
     return (
-      <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            Navbar
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#">
-                Home
-              </a>
-              <a class="nav-link" href="#">
-                Features
-              </a>
-              <a class="nav-link" href="#">
-                Pricing
-              </a>
-              <a class="nav-link disabled">Disabled</a>
-            </div>
-          </div>
-        </div>
-      </nav>
-    );
+        <Navbar bg="dark" variant="dark">
+        <Container>
+        <Navbar.Brand> <img
+        src="/logo.svg"
+        width="30"
+        height="30"
+        className="d-inline-block align-top"
+      /></Navbar.Brand>
+        <Nav className="me-auto">
+          <Nav.Link href="#home">Home</Nav.Link>
+          <Nav.Link href="/home">Vehicle Fleet</Nav.Link>
+          <Nav.Link href="/add">Add</Nav.Link>
+          <Nav.Link href="/">Cars Details</Nav.Link>
+        </Nav>
+        </Container>
+      </Navbar>
+    )
   }
 }

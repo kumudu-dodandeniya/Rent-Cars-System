@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import Table from 'react-bootstrap/Table'
+import { Button } from "react-bootstrap";
 
 export default class ReadCars extends Component {
 
@@ -48,7 +50,7 @@ export default class ReadCars extends Component {
 
   render() {
     return (
-      <div className='container'>
+      <div className='container-fluid'>
        <div className="row">
           <div className='col-lg-9 mt-2 mb-2'>
             <h4>All Cars</h4>
@@ -62,7 +64,7 @@ export default class ReadCars extends Component {
             onChange={this.handleSearchArea}></input>
           </div>
         </div>
-        <table className="table">
+        <Table striped bordered hover size="sm">
           <thead>
 
             <tr>
@@ -73,7 +75,7 @@ export default class ReadCars extends Component {
               <th scope="col">Fuel Type</th>
               <th scope="col">Transmission</th>
               <th scope="col">Image</th>
-              <th scope="col">Rate Per Day</th>
+              <th scope="col">Rate Per Day Rs</th>
               <th scope="col">Rate Per Week</th>
               <th scope="col">Action</th>
             </tr>
@@ -92,11 +94,12 @@ export default class ReadCars extends Component {
                 <td>{cars.rateweek}</td>
 
                 <td>
-                  <a className='btn btn-warning' href={`/edit/${cars._id}`}>
-                    <i className='fas fa-edit'></i>&nbsp;Edit
+                  <a className='btn btn-warning' href={`/edit/${cars._id}`}  title="Change Car Details">
+                    <i className='fas fa-edit' ></i>&nbsp;Update
+                    
                   </a>
                   &nbsp;
-                  <a className='btn btn-danger' href="#">
+                  <a className='btn btn-danger' href="#" title="Delete A Car">
                     <i className='fas fa-trash-alt'></i>&nbsp;Delete
                   </a>
                 </td>
@@ -104,10 +107,18 @@ export default class ReadCars extends Component {
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
 
-        <button className='btn btn-success'><a href='/add' style={{textDecoration: 'none',color:'white'}}>Create New Car</a></button>
         
+        
+        <Button
+                    variant="success"
+                    style={{ marginTop: "15px", marginBottom: "20px" }}
+                    title="Add New Car Into The Vehicle Fleet"
+                    onClick={() => this.props.history.push(`/add`)}
+                  >
+                    Create New Car
+                  </Button>
       </div>
     )
 }

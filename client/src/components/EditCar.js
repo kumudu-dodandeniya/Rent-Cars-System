@@ -204,6 +204,7 @@ export default class EditCar extends Component {
             className="btn btn-success"
             type="submit"
             style={{ marginTop: "15px", marginBottom: "20px", marginRight:"10px" }}
+            title="Save Car Details"
             onClick={this.onSubmit}
           >
             <i className="far fa-check-square"></i>&nbsp; Save
@@ -214,6 +215,7 @@ export default class EditCar extends Component {
           <Button
                     variant="success"
                     style={{ marginTop: "15px", marginBottom: "20px" }}
+                    title="Show All Cars Details"
                     onClick={() => this.props.history.push(`/`)}
                   >
                     Back
