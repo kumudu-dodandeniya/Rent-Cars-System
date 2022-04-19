@@ -152,10 +152,11 @@ export default class EditCar extends Component {
             <div className="col" style={{ marginBottom: "15px" }}>
               <label style={{ marginBottom: "5px" }}>Seatting Capacity</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="capacity"
                 placeholder="Enter Seat Capacity"
+                min="1" max="10"
                 value={this.state.capacity}
                 onChange={this.handleInputChange}
               ></input>
@@ -207,7 +208,7 @@ export default class EditCar extends Component {
             title="Save Car Details"
             onClick={this.onSubmit}
           >
-            <i className="far fa-check-square"></i>&nbsp; Save
+            <i className="fa fa-save"></i>&nbsp; Save
           </Button>
 
           
@@ -218,7 +219,7 @@ export default class EditCar extends Component {
                     title="Show All Cars Details"
                     onClick={() => this.props.history.push(`/`)}
                   >
-                    Back
+                    <i class='fa fa-backward'></i>&nbsp;Back
                   </Button>
         </form>
       </div>

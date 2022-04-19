@@ -77,8 +77,9 @@ export class photo extends Component {
                         <Button
                           variant="success"
                           style={{ marginTop: "60px", marginBottom: "20px" ,marginRight:"10px"}}
-                          title="Show All Cars Details"
-                          onClick={() => this.props.history.push(`/home`)}>&nbsp; Back
+                          title="Show All Vehicle"
+                          onClick={() => this.props.history.push(`/home`)}>
+                            <i class='fa fa-backward'></i>&nbsp; Back
 
                         </Button>
 
@@ -87,7 +88,7 @@ export class photo extends Component {
                         className="btn btn-success"
                         type="submit"
                         style={{ marginTop: "60px", marginBottom: "20px", marginRight:"10px" }}
-                        title="Save New Car"
+                        title="Book A Vehicle"
                         onClick={this.onSubmit}>
                       
                         <i className="fa fa-car"></i>&nbsp; Select Vehicle

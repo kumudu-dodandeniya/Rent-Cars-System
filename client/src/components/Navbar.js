@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
-import { Container,Nav,Navbar} from "react-bootstrap";
+import { Nav,Navbar} from "react-bootstrap";
 
 
 export default class bar extends Component {
   render() {
     return (
         <Navbar bg="dark" variant="dark">
-        <Container>
-        <Navbar.Brand> <img
-        src="/logo.svg"
+        <div class="container-fluid">
+        <Navbar.Brand> 
+          <img src= {process.env.PUBLIC_URL+"images/img.png"}
+        style={{  width:"100px", height:"100px"}}
         width="30"
         height="30"
         className="d-inline-block align-top"
@@ -17,9 +18,10 @@ export default class bar extends Component {
           <Nav.Link href="#home">Home</Nav.Link>
           <Nav.Link href="/home">Vehicle Fleet</Nav.Link>
           <Nav.Link href="/add">Add</Nav.Link>
-          <Nav.Link href="/">Cars Details</Nav.Link>
+          <Nav.Link href="/">Vehicle Details</Nav.Link>
+          <Nav.Link href="#">Sing out</Nav.Link>
         </Nav>
-        </Container>
+        </div>
       </Navbar>
     )
   }

@@ -53,6 +53,7 @@ export default class CreateCar extends Component {
 
     axios.post("/car/save", data).then((res) => {
       if (res.data.success) {
+        alert("New Vehicle Added Successfull");
         this.setState({
           name: "",
           transmission: "",
@@ -71,7 +72,7 @@ export default class CreateCar extends Component {
     return (
       <div className="col-md-8 mt-4 mx-auto">
         <h1 className="h3 mb-3 font-weight-normal">Add New Vehicle</h1>
-        <form>
+        <form className="form">
           <div className="row">
             <div className="col" style={{ marginBottom: "15px" }}>
               <label style={{ marginBottom: "5px" }}>Vehicle Name</label>
@@ -84,6 +85,7 @@ export default class CreateCar extends Component {
                 value={this.state.name}
                 onChange={this.handleInputChange}
                 required
+                pattern="[a-z]{1,15}"
                 
               >
                 
@@ -143,10 +145,13 @@ export default class CreateCar extends Component {
                 className="form-control"
                 name="capacity"
                 placeholder="Enter Seat Capacity"
-                pattern = "[0-9]{10}"
+                
                 value={this.state.capacity}
                 onChange={this.handleInputChange}
                 required
+                size="2"
+                min="1" max="10"
+                
               ></input>
             </div>
 
@@ -160,6 +165,7 @@ export default class CreateCar extends Component {
                 value={this.state.rateper}
                 onChange={this.handleInputChange}
                 required
+                pattern="\d*" title="Numbers only, please."
               ></input>
             </div>
           </div>
@@ -191,27 +197,28 @@ export default class CreateCar extends Component {
               ></input>
             </div>
           </div>
+          <Button
+                    variant="success"
+                    style={{ marginTop: "15px", marginBottom: "20px",marginRight:"10px" }}
+                    title="Show All vehicles Details"
+                    onClick={() => this.props.history.push(`/`)}
 
+                  >
+                    <i class='fa fa-backward'></i>&nbsp;
+                    Back
+                  </Button>
           <button
             className="btn btn-success"
             type="submit"
             style={{ marginTop: "15px", marginBottom: "20px", marginRight:"10px" }}
-            title="Save New Car"
+            title="Save New Vehicle"
             onClick={this.onSubmit}
           >
-            <i className="fa fa-car"></i>&nbsp; Save
+            <i className="fa fa-save"></i>&nbsp; Save
            
           </button>
 
-          <Button
-                    variant="success"
-                    style={{ marginTop: "15px", marginBottom: "20px" }}
-                    title="Show All Cars Details"
-                    onClick={() => this.props.history.push(`/`)}
-
-                  >
-                    Back
-                  </Button>
+          
         </form>
       </div>
     );

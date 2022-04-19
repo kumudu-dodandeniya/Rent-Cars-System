@@ -28,6 +28,15 @@ export default class ReadCars extends Component {
     });
   }
 
+  onDelete = (id) =>{
+
+    axios.delete(`cars/delete/${id}`).then((res) =>{
+      alert("deleted successfully");
+      this.retrieveCars();
+    })
+  }
+  
+
   filterData(cars,searchkey){
     const result = cars.filter((car) =>
     car.name.toLowerCase().includes(searchkey)
@@ -50,10 +59,10 @@ export default class ReadCars extends Component {
 
   render() {
     return (
-      <div className='container-fluid'>
+      <div className='container'>
        <div className="row">
           <div className='col-lg-9 mt-2 mb-2'>
-            <h4>All Cars</h4>
+            <h2>All Vehicle</h2>
           </div>
           <div className='col-lg-3 mt-2 mb-2'>
             <input 
@@ -64,10 +73,10 @@ export default class ReadCars extends Component {
             onChange={this.handleSearchArea}></input>
           </div>
         </div>
-        <Table striped bordered hover size="sm">
-          <thead>
+        <Table striped bordered hover variant="light" size="sm" style = {{border:"1px"}}>
+          <thead >
 
-            <tr>
+            <tr >
               <th scope="col">#</th>
               <th scope="col">Vehicle Name</th>
               <th scope="col">Type</th>
@@ -75,33 +84,36 @@ export default class ReadCars extends Component {
               <th scope="col">Fuel Type</th>
               <th scope="col">Transmission</th>
               <th scope="col">Image</th>
-              <th scope="col">Rate Per Day Rs</th>
+              <th scope="col">Rate Per Day </th>
               <th scope="col">Rate Per Week</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody >
             {this.state.cars.map((cars,index) =>(
-              <tr key={index}> 
-                <th scope='row'>{index+1}</th>
+              <tr key={index} > 
+                <th scope='row'>{index+1} </th>
                 <td>{cars.name}</td>
                 <td>{cars.type}</td>
                 <td>{cars.capacity}</td>
                 <td>{cars.fuelType}</td>
                 <td>{cars.transmission}</td>
                 <td ><img src={cars.image}  style={{width:'150px' , height:'100px'}}></img></td>
-                <td>{cars.rateper}</td>
-                <td>{cars.rateweek}</td>
+                <td>Rs.{cars.rateper}.00</td>
+                <td>Rs.{cars.rateweek}.00</td>
 
                 <td>
-                  <a className='btn btn-warning' href={`/edit/${cars._id}`}  title="Change Car Details">
+                  <a className='btn btn-warning' href={`/edit/${cars._id}`}  title="Change Vehicle Details">
                     <i className='fas fa-edit' ></i>&nbsp;Update
                     
                   </a>
                   &nbsp;
-                  <a className='btn btn-danger' href="#" title="Delete A Car">
+                  <a className='btn btn-danger'  onClick={() =>this.onDelete(cars._id)} title="Delete A Vehicle">
                     <i className='fas fa-trash-alt'></i>&nbsp;Delete
                   </a>
+
+                  
+
                 </td>
                 
               </tr>
@@ -114,10 +126,10 @@ export default class ReadCars extends Component {
         <Button
                     variant="success"
                     style={{ marginTop: "15px", marginBottom: "20px" }}
-                    title="Add New Car Into The Vehicle Fleet"
+                    title="Add New Vehicle Into The Vehicle Fleet"
                     onClick={() => this.props.history.push(`/add`)}
                   >
-                    Create New Car
+                    Add New Vehicle
                   </Button>
       </div>
     )

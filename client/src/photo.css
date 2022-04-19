@@ -26,7 +26,7 @@ body {
     border-radius: .28571429rem;
     box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
     margin-top:20px;
-    background-color:  #eee;
+    
 }
 
 .carousel-indicators li {
@@ -120,4 +120,10 @@ ul.carcat-1 .fa {
 
 h3.rate-title {
   font-size: 25px;
+}
+
+.form{
+  border:2px; border-style:solid; border-color:#171616; padding: 1em;
+  margin-bottom: 50px;
+  background-color:#d4d4d5
 }

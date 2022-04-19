@@ -48,10 +48,10 @@ export default class Home extends Component {
     return (
       <Container>
         <Row xs={1}>
-          <div className="col-lg-9 mt-2 mb-2">
-            <h4 style={{ textAlign: "center" }}>Vehicle Fleet</h4>
+          <div className="col-lg-11 mt-2 mb-2">
+            <h1 style={{ textAlign: "center", paddingLeft:"100px", fontFamily:"monospace" }}>Vehicle Fleet</h1>
           </div>
-          <div className="col-lg-3 mt-2 mb-2">
+          <div className="col-lg-4 mt-2 mb-2">
             <input
               className="form-control"
               type="search"
@@ -69,12 +69,15 @@ export default class Home extends Component {
                 <div class="box-element product">
                   <Card.Title>{item.name}</Card.Title>
                   <Card.Text>
-                  There is a brand new fleet of luxury cars for hire in Sri Lanka on offer.{item.type}
+                  There is a brand new fleet of luxury vehicles for hire in Sri Lanka on offer.<br/>
+                  Leather Int. A/C, Ambient/ Mood lighting, Power Steering, BlueTooth, {item.transmission} Gear
                   </Card.Text>
                   <Button
                     variant="success"
                     onClick={() => this.props.history.push(`/car/${item._id}`)}
+                    title="Show Details"
                   >
+                    
                     Read More
                   </Button>
                 </div>
