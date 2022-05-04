@@ -11,6 +11,7 @@ import { Container,  } from "react-bootstrap";
 import "./App.css";
 import "./photo.css";
 import photo from "./components/photo";
+import Generate from "./components/Generate";
 
 
 
@@ -26,7 +27,7 @@ export default class App extends Component {
           <Route path="/add" exact component={CreateCar}></Route>
           <Route path="/edit/:id" exact component={EditCar}></Route>
           <Route path="/car/:id" exact component={photo}></Route>
-
+          <Route path= "/generate" exact component={Generate}></Route>
           
 
           <Footer/>

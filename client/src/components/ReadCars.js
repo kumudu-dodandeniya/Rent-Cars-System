@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import Table from 'react-bootstrap/Table'
+//import Table from '@material-ui/core/Table'; 
 import { Button } from "react-bootstrap";
+
+import jsPDF from 'jspdf'; 
+
+import html2canvas from 'html2canvas'; 
+import Paper from '@material-ui/core/Paper';
+
 
 export default class ReadCars extends Component {
 
@@ -56,14 +63,35 @@ export default class ReadCars extends Component {
   }
 
 
+  printDocument() {  
+    const input = document.getElementById('pdfdiv');  
+    html2canvas(input)  
+      .then((canvas) => {  
+        var imgWidth = 200;  
+        var pageHeight = 290;  
+        var imgHeight = canvas.height * imgWidth / canvas.width;  
+        var heightLeft = imgHeight;  
+        const imgData = canvas.toDataURL('image/png');  
+        const pdf = new jsPDF('p', 'mm', 'a4')  
+        var position = 0;  
+        var heightLeft = imgHeight;  
+        pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);  
+        pdf.save("download.pdf");  
+      });  
+  }
+
+
+
+
 
   render() {
     return (
-      <div className='container'>
+      <div  id="pdfdiv" className='container' component={Paper}>
        <div className="row">
           <div className='col-lg-9 mt-2 mb-2'>
             <h2>All Vehicle</h2>
           </div>
+
           <div className='col-lg-3 mt-2 mb-2'>
             <input 
             className='form-control'
@@ -72,8 +100,10 @@ export default class ReadCars extends Component {
             name='searchQuery'
             onChange={this.handleSearchArea}></input>
           </div>
+
+            
         </div>
-        <Table striped bordered hover variant="light" size="sm" style = {{border:"1px"}}>
+        <Table stickyHeader aria-label="sticky table">
           <thead >
 
             <tr >
@@ -131,6 +161,10 @@ export default class ReadCars extends Component {
                   >
                     Add New Vehicle
                   </Button>
+
+                  <Button onClick={this.printDocument} variant="contained" color="primary">  
+            Generate Pdf  
+                                </Button> 
       </div>
     )
 }
