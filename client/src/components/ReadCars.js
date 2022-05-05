@@ -4,10 +4,8 @@ import Table from 'react-bootstrap/Table'
 //import Table from '@material-ui/core/Table'; 
 import { Button } from "react-bootstrap";
 
-import jsPDF from 'jspdf'; 
 
-import html2canvas from 'html2canvas'; 
-import Paper from '@material-ui/core/Paper';
+
 
 
 export default class ReadCars extends Component {
@@ -63,22 +61,7 @@ export default class ReadCars extends Component {
   }
 
 
-  printDocument() {  
-    const input = document.getElementById('pdfdiv');  
-    html2canvas(input)  
-      .then((canvas) => {  
-        var imgWidth = 200;  
-        var pageHeight = 290;  
-        var imgHeight = canvas.height * imgWidth / canvas.width;  
-        var heightLeft = imgHeight;  
-        const imgData = canvas.toDataURL('image/png');  
-        const pdf = new jsPDF('p', 'mm', 'a4')  
-        var position = 0;  
-        var heightLeft = imgHeight;  
-        pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);  
-        pdf.save("download.pdf");  
-      });  
-  }
+ 
 
 
 
@@ -86,7 +69,7 @@ export default class ReadCars extends Component {
 
   render() {
     return (
-      <div  id="pdfdiv" style={{padding:"40px"}} component={Paper}>
+      <div  id="pdfdiv" style={{padding:"40px"}} >
        <div className="row" style={{paddingBottom:"40px"}}>
           <div className='col-lg-9 mt-2 mb-2'>
             <h2>All Vehicle</h2>
@@ -103,7 +86,7 @@ export default class ReadCars extends Component {
 
             
         </div>
-        <Table stickyHeader aria-label="sticky table" style={{paddingTop:"40px"}}>
+        <Table striped bordered hover size="sm" style={{paddingTop:"40px"}}>
           <thead >
 
             <tr >
@@ -167,8 +150,8 @@ export default class ReadCars extends Component {
                  
                   style={{ marginTop: "15px", marginBottom: "20px" }}
                   title="Generate vehicle details pdf"
-                   onClick={this.printDocument} variant="success" color="primary">  
-            Generate Pdf  
+                   onClick={() => this.props.history.push(`/generate`)} variant="success" color="primary">  
+                  Generate Pdf  
                                 </Button> 
       </div>
     )
