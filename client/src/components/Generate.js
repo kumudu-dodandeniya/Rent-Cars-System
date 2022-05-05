@@ -1,14 +1,10 @@
 import React, { Component } from 'react'  
-import Table from '@material-ui/core/Table';  
-import TableBody from '@material-ui/core/TableBody';  
-import TableCell from '@material-ui/core/TableCell';  
-import TableContainer from '@material-ui/core/TableContainer';  
-import TableHead from '@material-ui/core/TableHead';  
-import TableRow from '@material-ui/core/TableRow';  
+import Table from 'react-bootstrap/Table'
+import { Button } from "react-bootstrap";
 import Paper from '@material-ui/core/Paper';  
 import axios from 'axios';  
 import jsPDF from 'jspdf';  
-import Button from '@material-ui/core/Button';  
+
 
 import html2canvas from 'html2canvas';  
  
@@ -42,7 +38,7 @@ export default class Generate extends Component {
       });  
   }
 
-  /*componentDidMount(){
+  componentDidMount(){
     this.retrieveCars();
   }
 
@@ -56,78 +52,59 @@ export default class Generate extends Component {
         console.log(this.state.cars);
       }
     });
-  }*/
-
-  componentDidMount() {  
-    axios.get("http://localhost:8000/cars").then(res => {
-      if(res.data.success){
-        this.setState({
-          cars:res.data.existingCars
-        });
-
-        console.log(this.state.cars);
-      }
-    }); 
   }
 
-
-
-
   render() {
-   
-    return (  
-      <div>  
-        <TableContainer id="pdfdiv" className="txt" component={Paper}>  
-          <Table stickyHeader aria-label="sticky table">  
-            <TableHead>  
-              <TableRow>  
-                 
-                <TableCell align="right">Vehicle Name</TableCell>  
-                <TableCell align="right">Type</TableCell>  
-                <TableCell align="right">Seating Capacity</TableCell>  
-                <TableCell align="right">Fuel Type</TableCell>  
-                <TableCell align="right">Transmission</TableCell>  
-                
-                <TableCell align="right">Rate Per Day</TableCell>  
-                <TableCell align="right">Rate Per Week</TableCell>  
-                
+    return (
+      <div  id="pdfdiv" style={{padding:"40px"}} component={Paper}>
+       <div className="row" style={{paddingBottom:"40px"}}>
+          <div className='center'>
+            <h2 style={{ textAlign: "center",fontFamily:"monospace" }}>Vehicle Details</h2>
+          </div>
+      
+        </div>
+        <Table striped bordered hover size="sm"   style={{paddingTop:"40px"}}>
+          <thead>
+
+            <tr  class="table-primary" style={{borderColor: "black"}}>
+              <th scope="col">#</th>
+              <th scope="col">Vehicle Name</th>
+              <th scope="col">Type</th>
+              <th scope="col">Seating Capacity</th>
+              <th scope="col">Fuel Type</th>
+              <th scope="col">Transmission</th>
+              <th scope="col">Rate Per Day </th>
+              <th scope="col">Rate Per Week</th>
+            
+            </tr>
+          </thead>
+          <tbody style={{borderColor: "black"}}>
+            {this.state.cars.map((cars,index) =>(
+              <tr key={index} class="table-active" > 
+                <th scope='row' class="table-dark">{index+1} </th>
+                <td >{cars.name}</td>
+                <td>{cars.type}</td>
+                <td>{cars.capacity}</td>
+                <td>{cars.fuelType}</td>
+                <td>{cars.transmission}</td>
+                <td>Rs.{cars.rateper}.00</td>
+                <td>Rs.{cars.rateweek}.00</td>
 
                 
-              </TableRow>  
-            </TableHead>  
-            <TableBody>  
-              {  
-              
-                this.state.cars.map((p, index) => {  
-                  return <TableRow key={index}>  
-                    <TableCell component="th" scope="row">  
-                        
-                    </TableCell>  
-                    <TableCell align="right">{p.name}</TableCell>  
-                    <TableCell align="right">{p.type}</TableCell>  
-                    <TableCell align="right">{p.capacity}</TableCell>  
-                    <TableCell align="right">{p.fuelType}</TableCell>  
-                    <TableCell align="right">{p.transmission}</TableCell>  
-                   
-                    <TableCell align="right">{p.rateper}</TableCell> 
-                    <TableCell align="right">{p.rateweek}</TableCell> 
+                
+              </tr>
+            ))}
+          </tbody>
+        </Table>
 
-                   
-
-                    
+                 <Button
                   
-                  </TableRow>  
-                })  
-              }  
-            </TableBody>  
-          </Table><br></br>  
-          <Button onClick={this.printDocument} variant="contained" color="primary">  
-            Generate Pdf  
-                                </Button>  
-        </TableContainer>  
-  
-      </div>  
-  
-    );  
-  }  
-}  
+                    style={{ marginTop: "15px", marginBottom: "20px" }}
+                    title="Download vehicle details pdf"
+                    onClick={this.printDocument} variant="success" color="primary">  
+                    Download Pdf  
+                </Button> 
+      </div>
+    )
+}
+}
