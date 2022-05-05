@@ -86,8 +86,8 @@ export default class ReadCars extends Component {
 
   render() {
     return (
-      <div  id="pdfdiv" className='container' component={Paper}>
-       <div className="row">
+      <div  id="pdfdiv" style={{padding:"40px"}} component={Paper}>
+       <div className="row" style={{paddingBottom:"40px"}}>
           <div className='col-lg-9 mt-2 mb-2'>
             <h2>All Vehicle</h2>
           </div>
@@ -103,7 +103,7 @@ export default class ReadCars extends Component {
 
             
         </div>
-        <Table stickyHeader aria-label="sticky table">
+        <Table stickyHeader aria-label="sticky table" style={{paddingTop:"40px"}}>
           <thead >
 
             <tr >
@@ -162,7 +162,12 @@ export default class ReadCars extends Component {
                     Add New Vehicle
                   </Button>
 
-                  <Button onClick={this.printDocument} variant="contained" color="primary">  
+                  &nbsp;
+                  <Button
+                 
+                  style={{ marginTop: "15px", marginBottom: "20px" }}
+                  title="Generate vehicle details pdf"
+                   onClick={this.printDocument} variant="success" color="primary">  
             Generate Pdf  
                                 </Button> 
       </div>

@@ -87,10 +87,10 @@ export default class Generate extends Component {
                 <TableCell align="right">Seating Capacity</TableCell>  
                 <TableCell align="right">Fuel Type</TableCell>  
                 <TableCell align="right">Transmission</TableCell>  
-                <TableCell align="right">Image</TableCell>  
+                
                 <TableCell align="right">Rate Per Day</TableCell>  
                 <TableCell align="right">Rate Per Week</TableCell>  
-                <TableCell align="right">Action</TableCell>  
+                
 
                 
               </TableRow>  
@@ -108,21 +108,11 @@ export default class Generate extends Component {
                     <TableCell align="right">{p.capacity}</TableCell>  
                     <TableCell align="right">{p.fuelType}</TableCell>  
                     <TableCell align="right">{p.transmission}</TableCell>  
-                    <TableCell align="right"><img src={p.image}  style={{width:'150px' , height:'100px'}}></img></TableCell>  
+                   
                     <TableCell align="right">{p.rateper}</TableCell> 
                     <TableCell align="right">{p.rateweek}</TableCell> 
 
-                    <TableCell> <a className='btn btn-warning' href={`/edit/${p._id}`}  title="Change Vehicle Details">
-                    <i className='fas fa-edit' ></i>&nbsp;Update
-                          
-                  </a>
-
-                  &nbsp;
-                  <a className='btn btn-danger'  onClick={() =>this.onDelete(p._id)} title="Delete A Vehicle">
-                    <i className='fas fa-trash-alt'></i>&nbsp;Delete
-                  </a>
-
-                    </TableCell> 
+                   
 
                     
                   
