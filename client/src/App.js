@@ -3,7 +3,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 import CarDetails from "./components/CarDetails";
 import CreateCar from "./components/CreateCar";
 import EditCar from "./components/EditCar";
-import NavBar from "./components/NavBar";
+//import NavBar from "./components/Nav";
+import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ReadCars from "./components/ReadCars";
 import Home from "./components/Home";
@@ -20,7 +21,7 @@ export default class App extends Component {
     return (
       <BrowserRouter>
         <Container fluid className={"wrapper"}>
-          <NavBar />
+          <Navbar/>
           
           <Route path="/" exact component={ReadCars}></Route>
           <Route path="/home" exact component={Home}></Route>
