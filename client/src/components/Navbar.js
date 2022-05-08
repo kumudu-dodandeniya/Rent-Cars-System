@@ -19,7 +19,7 @@ export default class bar extends Component {
           <Nav.Link href="/home">Vehicle Fleet</Nav.Link>
           <Nav.Link href="/add">Add</Nav.Link>
           <Nav.Link href="/">Vehicle Details</Nav.Link>
-          <Nav.Link href="#">Sing out</Nav.Link>
+         
         </Nav>
         </div>
       </Navbar>

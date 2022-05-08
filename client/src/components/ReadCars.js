@@ -61,12 +61,6 @@ export default class ReadCars extends Component {
   }
 
 
- 
-
-
-
-
-
   render() {
     return (
       <div  id="pdfdiv" style={{padding:"40px"}} >
