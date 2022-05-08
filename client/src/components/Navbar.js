@@ -15,10 +15,11 @@ export default class bar extends Component {
         className="d-inline-block align-top"
       /></Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
+          
           <Nav.Link href="/home">Vehicle Fleet</Nav.Link>
           <Nav.Link href="/add">Add</Nav.Link>
           <Nav.Link href="/">Vehicle Details</Nav.Link>
+          <Nav.Link href="/generate">Generate Report</Nav.Link>
          
         </Nav>
         </div>
