@@ -1,40 +1,30 @@
-import React, { Component } from 'react';
-import {BrowserRouter,Route} from 'react-router-dom';
-import addpost from './components/addpost';
-import editpost from './components/editpost';
-import home from './components/home';
-import postdetails from './components/postdetails';
-import NavBar from './components/navbar';
-import Footer from './components/Footer';
-import { Container,  } from "react-bootstrap";
-import "./App.css";
+import React from 'react';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import Navbar from "./components/navbar.component"
+
+import EditEmployee from "./components/Edit-Employee.component";
+import CreateEmployee from "./components/Create-Employee.component";
+import EmployeeList from "./components/Employee-list.component";
+import Report from "./components/Report.component";
+import Footer from "./components/Footer";
 
 
+function App() {
 
+    return ( <Router >
+        <div className = "container" >
+        <Navbar/ >
+        <br/ >
+        <Route path = "/" exact component = { EmployeeList }/>
+        <Route path = "/edit/:id" component = { EditEmployee }/> 
+        <Route path = "/create" component = { CreateEmployee }/> 
+        <Route path = "/Report" component = { Report }/> 
+        </div > 
+        <Footer/>
+        </Router>
+    );
+}
 
-
-export default class App extends Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <Container fluid className={"wrapper"}
->
-          <NavBar/>
-          <Route path='/' exact component={home}></Route>
-          <Route path='/add' component={addpost}></Route>
-          <Route path='/edit/:id' component={editpost}></Route>
-          <Route path='/post/:id' component={postdetails}></Route>
-
-          <Footer/>
-        </Container>
-
-      
-        
-       
-      
-      
-      </BrowserRouter>
-      
-    )
-  };
-};
+export default App;

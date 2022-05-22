@@ -10,6 +10,7 @@ export default function App() {
         <div className='me-5 d-none d-lg-block'>
           <span>Get connected with us on social networks:</span>
         </div>
+
         <div>
           <a href='' className='me-4 text-reset'>
             <i className='fab fa-facebook-f'></i>
@@ -31,11 +32,12 @@ export default function App() {
           </a>
         </div>
       </section>
+
       <section className=''>
         <div className='container text-center text-md-start mt-3'>
           <div className='row mt-3'>
             <div className='col-md-3 col-lg-4 col-xl-3 mx-auto mb-4'>
-              <img src= {process.env.PUBLIC_URL+"images/img.png"} style={{  marginTop:"10px", width:"200px", height:"200px"}}/>
+              <img src= {"/img.png"} style={{  marginTop:"10px", width:"200px", height:"200px"}}/>
              
             </div>
 
@@ -109,4 +111,4 @@ export default function App() {
       </div>
     </MDBFooter>
   );
-  };
+}
