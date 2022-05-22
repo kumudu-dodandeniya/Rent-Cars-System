@@ -1,32 +1,31 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
-const dotenv = require('dotenv');
-const { json } = require('express/lib/response');
-
-dotenv.config();
-
-const URL = process.env.MONGODB_URL;
-
-mongoose.connect(URL, {
-
-});
-
-const connection = mongoose.connection;
-
-connection.once("open", ()=> {
-    console.log("MongoDB connection was successful");
-})
-
+const bodyParser = require('body-parser');
 const app = express();
+const cors = require('cors');
 
-const PORT = process.env.PORT || 8070;
+//import routs
+const postRoutes = require('./routs/posts');
 
+//app middleware
+app.use(bodyParser.json());
 app.use(cors());
-app.use(express.json());
 
-app.listen(PORT, () => {
-    console.log(`Server is up and running on port number ${PORT}`);
+//route middle ware
+app.use(postRoutes);
+
+
+const PORT = 8000;
+const DB_URL = 'mongodb+srv://tt123:tt123@car.4kigr.mongodb.net/rentCar?retryWrites=true&w=majority';
+
+
+mongoose.connect(DB_URL)
+.then(() =>{
+    console.log('DB connected');
+})
+.catch((err) => console.log('DB connection error', err));
+
+
+app.listen(PORT, () =>{
+    console.log('App is running');
 });
-
-app.use("/sales", require("./BACKEND/routes/sales"));
