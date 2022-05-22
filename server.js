@@ -1,28 +1,32 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require ('body-parser');
+const express = require('express');
+const mongoose = require('mongoose');
 const cors = require('cors');
+const dotenv = require('dotenv');
+const { json } = require('express/lib/response');
+
+dotenv.config();
+
+const URL = process.env.MONGODB_URL;
+
+mongoose.connect(URL, {
+
+});
+
+const connection = mongoose.connection;
+
+connection.once("open", ()=> {
+    console.log("MongoDB connection was successful");
+})
 
 const app = express();
 
-//import routes
-const carRoutes = require('./routes/cars');
-const { required } = require("nodemon/lib/config");
+const PORT = process.env.PORT || 8070;
 
-//app middleware
-app.use(bodyParser.json());
 app.use(cors());
+app.use(express.json());
 
-//rote middleware
-app.use(carRoutes);
+app.listen(PORT, () => {
+    console.log(`Server is up and running on port number ${PORT}`);
+});
 
-const PORT = 8000;
- app.listen(PORT, () =>{
-     console.log(`app is running on ${PORT}`);
- });
-
-mongoose.connect("mongodb+srv://kumudu:kumudu1234@cluster1.rjapr.mongodb.net/cars?retryWrites=true&w=majority",{useNewUrlParser: true,useUnifiedTopology: true})
-.then(() =>{
-    console.log("Connected To Database");
-})
-.catch((error)=> console.log(error));
+app.use("/sales", require("./BACKEND/routes/sales"));

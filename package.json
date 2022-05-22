@@ -1,27 +1,22 @@
 {
-  "name": "backend",
+  "name": "sales-management",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kumudu-dodandeniya/Rent-Cars-System.git"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kumudu-dodandeniya/Rent-Cars-System/issues"
-  },
-  "homepage": "https://github.com/kumudu-dodandeniya/Rent-Cars-System#readme",
   "dependencies": {
-    "body-parser": "^1.19.2",
+    "concurrently": "^7.0.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "mongoose": "^6.2.8",
+    "mongoose": "^6.2.9",
     "nodemon": "^2.0.15"
   }
 }
